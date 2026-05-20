@@ -1,0 +1,35 @@
+name: Run AI Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "Agent input"
+        required: true
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm install node-fetch
+
+      - name: Run Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          node -e "
+          import('./engine/agent-runner.js').then(async (m) => {
+            const result = await m.runAgent('${{ github.event.inputs.prompt }}');
+            console.log('AGENT OUTPUT:', result);
+          });
+          "
