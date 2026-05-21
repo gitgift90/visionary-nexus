@@ -1,0 +1,17 @@
+{
+  "name": "visionary-nexus",
+  "version": "1.0.0",
+  "description": "AI ecosystem hub for The Visionary Journey™ and PBC",
+  "type": "module",
+  "main": "engine/agent-runner.js",
+  "scripts": {
+    "start": "node engine/agent-runner.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ai", "agent", "visionary"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}
