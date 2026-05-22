@@ -14,4 +14,4 @@ steps:
   - name: Run Agent
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: node engine/agent-runner.js
+        run: node engine/agent-runner.js 
